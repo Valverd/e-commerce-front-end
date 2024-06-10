@@ -1,0 +1,27 @@
+.carousel{
+    margin-bottom: 80px;
+}
+
+.carousel-title{
+    text-decoration: none;
+    color: #000;
+    display: inline-block;
+}
+
+.carousel-title h1{
+    transition: 0.3s all ease;
+}
+
+.carousel-title h1:hover{
+    transform: scale(1.1);
+}
+
+.carousel-container{
+    overflow: hidden;
+}
+
+.carousel-list{
+    display: flex;
+    cursor: grab;
+}
+
