@@ -10,7 +10,6 @@ export default function Carousel({ items, type }) {
     const carousel = useRef()
     const [startPos, setStartPos] = useState(0);
     const [endPos, setEndPos] = useState(0);
-    const [isDragging, setIsDragging] = useState(true);
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -28,16 +27,15 @@ export default function Carousel({ items, type }) {
 
     const handleDragEnd = (event, info) => {
         setEndPos(info.point.x);
-        console.log(Math.abs(startPos - info.point.x))
         if(Math.abs(startPos - endPos) > 5){
             setStartPos(0)
             setEndPos(0)
         }
     };
 
-    const handleClick = (event, i) => {
+    const handleClick = (item) => {
         if (Math.abs(startPos - endPos) < 5) {
-            navigate(`/${type}/${i}`);
+            navigate(`/${type}/${item.id}`);
         }
     };
 
@@ -66,7 +64,7 @@ export default function Carousel({ items, type }) {
                     {
                         items.map((item, i) => {
                             return (
-                                <div key={i} onClick={(e) => handleClick(e, i)}>
+                                <div key={i} onClick={(e) => handleClick(item)}>
                                     <ProductItem i={i} item={item} type={type} />
                                 </div>
                             )

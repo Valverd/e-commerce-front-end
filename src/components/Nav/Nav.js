@@ -1,12 +1,19 @@
 import { Link } from 'react-router-dom'
 import './Nav.css'
-import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { FiShoppingCart } from 'react-icons/fi'
 
 export default function Nav() {
 
-    const [logged, setLogged] = useState(true)
+    const dispatch = useDispatch()
+    const { currentUser, isAuthenticated } = useSelector(rootReducer => rootReducer.userReducer)
 
-    if (logged) {
+    function handleLogout() {
+        window.location.reload()
+        dispatch({ type: 'LOGOUT_USER' })
+    }
+
+    if (isAuthenticated) {
 
         return (
             <nav className="nav">
@@ -18,10 +25,17 @@ export default function Nav() {
                         <Link to={'/'} className='nav-link'>
                             <p>Início</p>
                         </Link>
-                        <Link to={'/profile'} className='nav-link'>
+                        <Link to={'/profile'} className='nav-link' >
                             <p>Meu Perfil</p>
                         </Link>
-                        <Link to={'/'} className='nav-link'>
+                        <Link to={'/my-cart'} className='nav-link' title='Meu Carrinho'>
+                            <FiShoppingCart size={20} className='nav-link-icon' />
+                        </Link>
+                        <Link
+                            to={'/'}
+                            className='nav-link'
+                            onClick={handleLogout}
+                        >
                             <p>Sair</p>
                         </Link>
                     </div>
@@ -38,9 +52,6 @@ export default function Nav() {
                     <h1>SkateMidia</h1>
                 </Link>
                 <div className="nav-links">
-                    <Link to={'/'} className='nav-link'>
-                        <p>Início</p>
-                    </Link>
                     <Link to={'/login'} className='nav-link'>
                         <p>Entrar</p>
                     </Link>

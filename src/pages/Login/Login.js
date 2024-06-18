@@ -1,14 +1,29 @@
 import { Link, useNavigate } from 'react-router-dom'
 import GenericPage from '../GenericPage'
 import './Login.css'
+import { useDispatch } from 'react-redux'
+import { useState } from 'react'
 
 export default function Login() {
 
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     function handleLogin(e) {
         e.preventDefault()
-        navigate('/')
+
+        if (email === 'teste@teste.com' && password === '123123') {
+            dispatch({ type: 'LOGIN_USER', payload: { name: 'Renan', email: email, my_cart: [], my_purchases: [] } })
+            navigate('/')
+        } else{
+            setEmail('')
+            setPassword('')
+            alert('Email ou Senha devem estar incorretos.')
+        }
+
     }
 
     return (
@@ -24,11 +39,11 @@ export default function Login() {
                                 <label>
                                     Email
                                 </label>
-                                <input type='text' />
+                                <input type='email' value={email} onChange={(e) => setEmail(e.target.value)} />
                                 <label>
                                     Senha
                                 </label>
-                                <input type='password' />
+                                <input type='password' value={password} onChange={(e) => setPassword(e.target.value)}/>
                             </div>
                             <button onClick={handleLogin}>Entrar</button>
                             <div className='login-form-links'>

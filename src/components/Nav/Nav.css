@@ -15,6 +15,8 @@
 
 .nav-link{
     text-decoration: none;
+    display: flex;
+    align-items: center;
 }
 
 .nav-container h1{
@@ -24,15 +26,24 @@
 
 .nav-links{
     display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 .nav-links p{
-    margin-left: 20px;
     font-size: 1.1em;
     color: #fff;
     transition: 0.2s all ease;
 }
 
 .nav-link p:hover{
+    opacity: 0.6;
+}
+
+.nav-link-icon{
+    color: #fff;
+}
+
+.nav-link-icon:hover{
     opacity: 0.6;
 }

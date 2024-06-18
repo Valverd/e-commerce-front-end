@@ -34,7 +34,7 @@
     color: #6B8E23;
 }
 
-.purchase button{
+.purchase-btn-show, .my-cart-list-btn-show{
     padding: 15px;
     font-size: 1em;
     border-radius: 10px;
@@ -43,8 +43,38 @@
     color: #fff;
     cursor: pointer;
     transition: 0.3s all;
+    border: 2px solid #284B63;
+
 }
 
 .purchase button:hover{
     opacity: 0.9;
+}
+
+
+
+
+/* style para lista de carrinho */
+
+.my-cart-list-btns{
+    display: flex;
+    flex-direction: column;
+}
+
+.my-cart-list-btn-remove{
+    padding: 15px;
+    font-size: 1em;
+    border-radius: 10px;
+    border: 2px solid #284B63;
+    background-color: #fff;
+    color: #284B63;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s all;
+    margin-top: 10px;
+}
+
+.my-cart-list-btn-remove:hover{
+    background-color: #284B63;
+    color: #fff;
 }
