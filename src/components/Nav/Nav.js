@@ -22,9 +22,6 @@ export default function Nav() {
                         <h1>SkateMidia</h1>
                     </Link>
                     <div className="nav-links">
-                        <Link to={'/'} className='nav-link'>
-                            <p>Início</p>
-                        </Link>
                         <Link to={'/profile'} className='nav-link' >
                             <p>Meu Perfil</p>
                         </Link>

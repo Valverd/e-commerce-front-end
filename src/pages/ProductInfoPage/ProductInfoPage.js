@@ -60,7 +60,7 @@ export default function ProductInfoPage() {
 
     function handleAddCart() {
         if (isAuthenticated) {
-            currentUser.my_cart.push(product)
+            currentUser.cart.push(product)
             console.log(product)
             toast.success('Produto Adicionado ao Carrinho')
         } else {
@@ -71,7 +71,7 @@ export default function ProductInfoPage() {
 
     async function handleBuy() {
         if (isAuthenticated) {
-            currentUser.my_purchases.push(product);
+            currentUser.purchases.push(product);
             toast.success('Compra Realizada');
         } else {
             toast.error('Você precisa estar logado!');

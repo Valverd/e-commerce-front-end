@@ -93,7 +93,7 @@ export default function Profile() {
                         <div className='profile-purchases'>
                             <h1 className='profile-purchases-title'>Minhas Compras</h1>
                             {
-                                currentUser.my_purchases.map((item, i) => {
+                                currentUser.purchases.map((item, i) => {
                                     return (
                                         <Purchase
                                             key={i}

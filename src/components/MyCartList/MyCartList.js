@@ -7,14 +7,14 @@ import { toast } from 'react-toastify'
 export default function MyCartList() {
 
     const { currentUser } = useSelector(rootReducer => rootReducer.userReducer)
-    const [cartItems, setCartItems] = useState(currentUser.my_cart)
+    const [cartItems, setCartItems] = useState(currentUser.cart)
     
 
     //chamo essa função aqui porém ela é realizada no componente filho (Purchase) para atualizar a lista
     function removeFromCart(id) {
-        let uptadedList = currentUser.my_cart.filter(e => e.id !== id)
+        let uptadedList = currentUser.cart.filter(e => e.id !== id)
         setCartItems(uptadedList)
-        currentUser.my_cart = uptadedList
+        currentUser.cart = uptadedList
         toast.info('Produto removido do carrinho!')
     }
 

@@ -3,25 +3,36 @@ import GenericPage from '../GenericPage'
 import './Login.css'
 import { useDispatch } from 'react-redux'
 import { useState } from 'react'
+import api from '../../api/api'
+import { toast } from 'react-toastify'
 
 export default function Login() {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const navigate = useNavigate()
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
-    function handleLogin(e) {
+    async function handleLogin(e) {
         e.preventDefault()
 
-        if (email === 'teste@teste.com' && password === '123123') {
-            dispatch({ type: 'LOGIN_USER', payload: { name: 'Renan', email: email, my_cart: [], my_purchases: [] } })
-            navigate('/')
-        } else{
-            setEmail('')
-            setPassword('')
-            alert('Email ou Senha devem estar incorretos.')
+        try {
+            await api.post('/user/login', {
+                email,
+                password
+            })
+                .then((user) => {
+                    dispatch({type: 'LOGIN_USER', payload: user.data})
+                    localStorage.setItem('token', JSON.stringify(user.data.token))
+                    navigate('/')
+                })
+                .catch((error) => {
+                    toast.error(error.response.data)
+                    console.log(error)
+                })
+        } catch (error) {
+            toast("Erro! Tente novamente...")
         }
 
     }
@@ -43,7 +54,7 @@ export default function Login() {
                                 <label>
                                     Senha
                                 </label>
-                                <input type='password' value={password} onChange={(e) => setPassword(e.target.value)}/>
+                                <input type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
                             </div>
                             <button onClick={handleLogin}>Entrar</button>
                             <div className='login-form-links'>
