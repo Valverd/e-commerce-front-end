@@ -29,7 +29,6 @@ export default function Login() {
                 })
                 .catch((error) => {
                     toast.error(error.response.data)
-                    console.log(error)
                 })
         } catch (error) {
             toast("Erro! Tente novamente...")

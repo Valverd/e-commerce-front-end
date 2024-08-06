@@ -2,10 +2,11 @@ import './ProductInfoPage.css'
 import { useParams } from "react-router-dom";
 import Nav from "../../components/Nav/Nav";
 import GenericPage from "../GenericPage";
-import { products } from "../../api/products";
+import api from '../../api/api';
 import { useEffect, useState } from "react";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import { GiConsoleController } from 'react-icons/gi';
 
 
 export default function ProductInfoPage() {
@@ -29,20 +30,22 @@ export default function ProductInfoPage() {
     const [loading, setLoading] = useState(true)
 
     const type = useParams().products
-    const IDproduct = useParams().id
+    const id = useParams().id
     const currentDate = new Date()
     const day = currentDate.getDate()
     const month = months[currentDate.getMonth()]
     const year = currentDate.getFullYear()
 
     const { currentUser, isAuthenticated } = useSelector(rootReducer => rootReducer.userReducer)
-
+    const dispatch = useDispatch()
 
     useEffect(() => {
         async function getProduct() {
-            await setProduct(products.filter((products) => products.type === type)[0].items[IDproduct - 1])
+            await api.post('/products/id', {id}).then((res) => {
+                res.data.qty = 1
+                setProduct(res.data)
+            }).catch((error) => alert(error))
             setLoading(false)
-
         }
 
         async function dateProduct() {
@@ -52,26 +55,27 @@ export default function ProductInfoPage() {
             });
         }
 
-
         getProduct()
         dateProduct()
-
     }, [])
 
-    function handleAddCart() {
+    async function handleAddCart() {
         if (isAuthenticated) {
-            currentUser.cart.push(product)
-            console.log(product)
-            toast.success('Produto Adicionado ao Carrinho')
+            await api.post('/purchase/addCart', {user_id: currentUser._id, product})
+                .then((res) => {                    
+                    currentUser.cart.push(product)
+                    dispatch({ type: 'UPDATE_USER', payload: { cart:  currentUser.cart} })
+                    toast.success(res.data)
+                })
+                .catch(error => toast.error(error.response.data))
         } else {
             toast.error('Você precisa estar logado!')
         }
-
     }
 
     async function handleBuy() {
         if (isAuthenticated) {
-            currentUser.purchases.push(product);
+            // currentUser.purchases.push(product);
             toast.success('Compra Realizada');
         } else {
             toast.error('Você precisa estar logado!');
@@ -90,12 +94,15 @@ export default function ProductInfoPage() {
                         </div>
                         <div className="product-info-page-info">
 
-                            <h1>{`${product.name} ${product.id}`}</h1>
+                            <h1>{`${product.name}`}</h1>
                             <div className='product-info-page-info-description'>
                                 Lorem ipsum molestie suscipit vivamus imperdiet neque nibh a, platea lacinia velit eu maecenas netus amet sodales, iaculis ipsum eleifend elit euismod elementum sodales. dui massa tellus velit rutrum vestibulum nisi nunc class tempor, himenaeos posuere tellus nisl facilisis nam morbi tempus rhoncus augue elementum, cras porta litora nulla enim pulvinar lobortis sapien iaculis ligula accumsan.
                             </div>
                             <div className='product-info-page-info-price'>
-                                <p><span>R$</span> 100,00</p>
+                                <p><span>R$</span> {product.price.toLocaleString('pt-br', {minimumFractionDigits: 2})}</p>
+                            </div>
+                            <div className='product-info-page-info-stock'>
+                                <p>Disponíveis: {product.stock}</p>
                             </div>
                             <div className='product-info-page-info-btns'>
                                 <button className='product-info-page-info-buy' onClick={handleBuy}>Comprar</button>

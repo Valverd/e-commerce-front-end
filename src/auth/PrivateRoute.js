@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import api from "../api/api"
 import { Navigate, useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
+import { toast } from 'react-toastify'
 
 export default function PrivateRoute({ children }) {
     const [loading, setLoading] = useState(true)
@@ -20,16 +21,16 @@ export default function PrivateRoute({ children }) {
         async function getToken() {
             if (token) {
                 api.defaults.headers.common['authorization'] = token
-                await api.get('/token')
-                    .then((data) => {
-                        setLoading(false)
-                        console.log(data)
-                    })
+                await api.get('/token').then(() => {
+                    setLoading(false)
+                })
                     .catch(() => {
                         dispatch({ type: 'LOGOUT_USER' })
+                        navigate('/')
                     })
             } else {
                 navigate('/login')
+                toast.error('Você deve fazer login para acessar esta área!')
             }
         }
 
@@ -45,6 +46,6 @@ export default function PrivateRoute({ children }) {
     }
 
     return (
-        isAuthenticated ? children : <Navigate to={'/login'}/>
+        isAuthenticated ? children : <Navigate to={'/login'} />
     )
 }

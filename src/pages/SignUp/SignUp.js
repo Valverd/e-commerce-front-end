@@ -8,6 +8,7 @@ import { toast } from 'react-toastify'
 export default function SignUp() {
 
     const [name, setName] = useState('')
+    const [address, setAddress] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -15,7 +16,7 @@ export default function SignUp() {
 
     async function handleSignUp(e) {
         e.preventDefault()
-        await api.post('/user/signUp', {name, email, password})
+        await api.post('/user/signUp', {name, address, email, password})
             .then((data) => {
                 console.log(data)
                 toast.success('Cadastrado com sucesso!')
@@ -41,6 +42,11 @@ export default function SignUp() {
                                 </label>
                                 <input type='text' onChange={(e) => {setName(e.target.value)}}/>
                                 <label>
+                                    Endereço
+                                </label>
+                                <input type='text' onChange={(e) => {setAddress(e.target.value)}}/>
+                                <label>
+
                                     Email
                                 </label>
                                 <input type='text' onChange={(e) => {setEmail(e.target.value)}}/>

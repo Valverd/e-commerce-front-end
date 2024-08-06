@@ -1,7 +1,7 @@
-.products-list{
+.container-products-list{
     display: flex;
     flex-wrap: wrap;
+    margin: auto;
     justify-content: center;
-    width: 100%;
     margin-bottom: 80px;
 }

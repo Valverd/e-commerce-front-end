@@ -1,43 +1,47 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './Nav.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { FiShoppingCart } from 'react-icons/fi'
+import PrivateRoute from '../../auth/PrivateRoute'
 
 export default function Nav() {
 
     const dispatch = useDispatch()
-    const { currentUser, isAuthenticated } = useSelector(rootReducer => rootReducer.userReducer)
+    const navigate = useNavigate()
+    const { isAuthenticated } = useSelector(rootReducer => rootReducer.userReducer)
 
     function handleLogout() {
-        window.location.reload()
+        navigate('/')
+        localStorage.removeItem('token')
         dispatch({ type: 'LOGOUT_USER' })
     }
 
     if (isAuthenticated) {
-
         return (
-            <nav className="nav">
-                <div className='nav-container'>
-                    <Link to={'/'} className='nav-link'>
-                        <h1>SkateMidia</h1>
-                    </Link>
-                    <div className="nav-links">
-                        <Link to={'/profile'} className='nav-link' >
-                            <p>Meu Perfil</p>
+            <PrivateRoute>
+                <nav className="nav">
+                    <div className='nav-container'>
+                        <Link to={'/'} className='nav-link'>
+                            <h1>SkateMidia</h1>
                         </Link>
-                        <Link to={'/my-cart'} className='nav-link' title='Meu Carrinho'>
-                            <FiShoppingCart size={20} className='nav-link-icon' />
-                        </Link>
-                        <Link
-                            to={'/'}
-                            className='nav-link'
-                            onClick={handleLogout}
-                        >
-                            <p>Sair</p>
-                        </Link>
+                        <div className="nav-links">
+                            <Link to={'/profile'} className='nav-link' >
+                                <p>Meu Perfil</p>
+                            </Link>
+                            <Link to={'/my-cart'} className='nav-link' title='Meu Carrinho'>
+                                <FiShoppingCart size={20} className='nav-link-icon' />
+                            </Link>
+                            <Link
+                                to={'/'}
+                                className='nav-link'
+                                onClick={handleLogout}
+                            >
+                                <p>Sair</p>
+                            </Link>
+                        </div>
                     </div>
-                </div>
-            </nav>
+                </nav>
+            </PrivateRoute>
         )
 
     }

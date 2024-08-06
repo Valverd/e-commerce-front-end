@@ -1,9 +1,9 @@
-.my-cart-title{
+.my-cart-title {
     padding-bottom: 30px;
     border-bottom: 1px solid #ccc;
 }
 
-.my-cart-list{
+.my-cart-list {
     width: 100%;
     background-color: #fff;
     padding: 20px;
@@ -12,7 +12,42 @@
     box-shadow: 0 0 10px #aaa;
 }
 
-.my-cart-empty{
+.my-cart-total{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.my-cart-total button{
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #6B8E23;
+    background-color: #6B8E23;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.my-cart-total button:hover{
+    background-color: #fff;
+    border: 1px solid #6B8E23;
+    color: #6B8E23;
+    font-weight: bold;
+}
+
+.my-cart-total-left {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.my-cart-empty {
     text-align: center;
     margin-top: 20px;
     font-size: 1.2em;

@@ -30,6 +30,17 @@
     font-size: 1.5em;
 }
 
+.purchase-description-stock{    
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    user-select: none;
+}
+
+.purchase-description-stock span{
+    font-weight: bold;
+}
+
 .purchase-description-price{
     color: #6B8E23;
 }
