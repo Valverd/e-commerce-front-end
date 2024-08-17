@@ -10,7 +10,6 @@ export default function Nav() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { currentUser, isAuthenticated } = useSelector(rootReducer => rootReducer.userReducer)
-    console.log(currentUser.profileImg)
     function handleLogout() {
         navigate('/')
         localStorage.removeItem('token')
