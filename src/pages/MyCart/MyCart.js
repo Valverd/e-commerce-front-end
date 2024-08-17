@@ -21,7 +21,7 @@ export default function MyCart() {
 
     useEffect(() => {
         async function loadCart() {
-            await currentUser.cart.map((element) => {
+            await currentUser.cart.forEach((element) => {
                 setCartItems((prev_products) => [...prev_products, element])
                 setTotalPrice(state => state + (element.price * element.qty))
                 setTotalItems(state => state + element.qty)
@@ -33,7 +33,7 @@ export default function MyCart() {
 
 
     async function handleBuy() {
-        await cartItems.map((element) => {
+        await cartItems.forEach((element) => {
             element.date = new Date()
         })
 
@@ -51,7 +51,7 @@ export default function MyCart() {
     async function changeProductQty(id, qty) {
         let updated_cart = []
 
-        await cartItems.map((element) => {
+        await cartItems.forEach((element) => {
             if (element._id === id) {
                 element.qty = qty
                 updated_cart.push(element)

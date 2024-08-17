@@ -1,15 +1,11 @@
 import './CartItem.css'
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { FiPlus, FiMinus } from 'react-icons/fi'
-import { useSelector } from 'react-redux'
-import api from '../../api/api'
-import { toast } from 'react-toastify'
 
 
 export default function CartItem({ product_type, name, price, image, stock, qty, id, removeFromCart, changeProductQty, setTotalItems, setTotalPrice }) {
 
-    const { currentUser } = useSelector(rootReducer => rootReducer.userReducer)
     const navigate = useNavigate()
 
     const [product_qty, setProduct_qty] = useState(qty)
@@ -40,7 +36,7 @@ export default function CartItem({ product_type, name, price, image, stock, qty,
     return (
         <div className="cart-item">
             <div className='cart-item-info'>
-                <img src={image} width={100} />
+                <img alt='Imagem do Produto' src={image} width={100} />
                 <div className='cart-item-description'>
                     <h1>{name}</h1>
 

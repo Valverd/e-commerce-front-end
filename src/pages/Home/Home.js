@@ -14,7 +14,7 @@ export default function Home() {
             await api.get('/products')
                 .then((res) => {
                     let types_filter = []
-                    res.data.map(element => {
+                    res.data.forEach(element => {
                         types_filter.push(element.type)
                         setProducts(prevList => [...prevList, element])
                     })

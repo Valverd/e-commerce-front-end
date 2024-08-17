@@ -1,14 +1,8 @@
 import './Purchase.css'
 import { useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import { useEffect, useState } from 'react'
-
-
-//vou ter que dividir cart item e purchase em diferentes arquivos
 
 export default function Purchase({ product_type, name, price, image, id, qty, date }) {
 
-    const { currentUser } = useSelector(rootReducer => rootReducer.userReducer)
     const navigate = useNavigate()
 
     const optionsHora = {
@@ -31,7 +25,7 @@ export default function Purchase({ product_type, name, price, image, id, qty, da
     return (
         <div className="purchase">
             <div className='purchase-info'>
-                <img src={image} width={100} />
+                <img alt='Imagem do Produto' src={image} width={100} />
                 <div className='purchase-description'>
                     <h1>{name}</h1>
                     <div className='purchase-description-infos'>
