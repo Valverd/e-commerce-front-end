@@ -20,7 +20,6 @@ export default function Profile() {
     const [profileImg, setProfileImg] = useState(currentUser.profileImg)
     //sendProfileImg serve para mandar para o back sem ser o URL.createObjetURL
     const [sendProfileImg, setSendProfileImg] = useState(null)
-
     const dispatch = useDispatch()
 
 
@@ -50,8 +49,8 @@ export default function Profile() {
                 toast.success(res.data)
                 dispatch({ type: 'UPDATE_USER', payload: { name, address, profileImg } })
             })
-            .catch((error) => console.log(error))
-    }
+            .catch((error) => toast.error(error.response.data))
+        }
 
     if (isAuthenticated) {
         return (
@@ -113,21 +112,29 @@ export default function Profile() {
                         <div className='profile-purchases'>
                             <h1 className='profile-purchases-title'>Minhas Compras</h1>
                             {
-                                currentUser.purchases.map((item, i) => {
-                                    console.log(item)
-                                    return (
-                                        <Purchase
-                                            key={i}
-                                            type={'purchase'}
-                                            name={item.name}
-                                            price={item.price}
-                                            image={item.img}
-                                            id={item._id}
-                                            qty={item.qty}
-                                        />
+                                currentUser.purchases.length > 0 ?
+                                    (
+                                        currentUser.purchases.map((item, i) => {
+                                            return (
+                                                <Purchase
+                                                    key={i}
+                                                    product_type={item.type}
+                                                    name={item.name}
+                                                    price={item.price}
+                                                    image={item.img}
+                                                    id={item._id}
+                                                    qty={item.qty}
+                                                    date={item.date}
+                                                />
+                                            )
+
+                                        })
+
                                     )
 
-                                })
+                                    :
+
+                                    (<div className='my-cart-empty'>Está Vazio...</div>)
                             }
                         </div>
 

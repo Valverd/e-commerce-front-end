@@ -1,5 +1,6 @@
-import { Link, useNavigate } from 'react-router-dom'
 import './Nav.css'
+import avatar from '../../assets/usuario-em-branco.png'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { FiShoppingCart } from 'react-icons/fi'
 import PrivateRoute from '../../auth/PrivateRoute'
@@ -8,8 +9,8 @@ export default function Nav() {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const { isAuthenticated } = useSelector(rootReducer => rootReducer.userReducer)
-
+    const { currentUser, isAuthenticated } = useSelector(rootReducer => rootReducer.userReducer)
+    console.log(currentUser.profileImg)
     function handleLogout() {
         navigate('/')
         localStorage.removeItem('token')
@@ -26,7 +27,20 @@ export default function Nav() {
                         </Link>
                         <div className="nav-links">
                             <Link to={'/profile'} className='nav-link' >
-                                <p>Meu Perfil</p>
+                                {
+                                    currentUser.profileImg ?
+                                        <img
+                                            src={currentUser.profileImg}
+                                            alt="Foto de Perfil"
+                                            className='nav-img'
+                                        />
+                                        :
+                                        <img
+                                            src={avatar}
+                                            alt="Foto de Perfil"
+                                            className='nav-img'
+                                        />
+                                }
                             </Link>
                             <Link to={'/my-cart'} className='nav-link' title='Meu Carrinho'>
                                 <FiShoppingCart size={20} className='nav-link-icon' />

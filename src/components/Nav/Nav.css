@@ -30,13 +30,23 @@
     gap: 20px;
 }
 
-.nav-links p{
-    font-size: 1.1em;
-    color: #fff;
+.nav-img{
+    border-radius: 50%;
+    background-color: #fff;
+    width: 28px;
+    height: 28px;
+}
+
+.nav-links p, img{
     transition: 0.2s all ease;
 }
 
-.nav-link p:hover{
+.nav-links p{
+    font-size: 1.1em;
+    color: #fff;
+}
+
+.nav-link p:hover, .nav-links img:hover{
     opacity: 0.6;
 }
 

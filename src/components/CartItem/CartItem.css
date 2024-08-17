@@ -1,4 +1,4 @@
-.purchase{
+.cart-item{
     display: flex;
     border-bottom: 1px solid #ccc;
     justify-content: space-between;
@@ -7,53 +7,46 @@
     transition: 0.3s all;
 }
 
-.purchase:hover{
+.cart-item:hover{
     background-color: #eee;
 }
 
-.purchase-info{
+.cart-item-info{
     display: flex;
 }
 
-.purchase img{
+.cart-item img{
     margin-right: 20px;
     border-radius: 10px;
 }
 
-.purchase-description{
+.cart-item-description{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     gap: 5px;
 }
 
-.purchase-description h1{
+.cart-item-description h1{
     font-size: 1.5em;
 }
 
-.purchase-description-infos{
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-}
-
-.purchase-description-stock{    
+.cart-item-description-stock{    
     display: flex;
     align-items: center;
     gap: 5px;
     user-select: none;
 }
 
-.purchase-description-stock span{
+.cart-item-description-stock span{
     font-weight: bold;
 }
 
-.purchase-description-price{
+.cart-item-description-price{
     color: #6B8E23;
-    font-size: 1.2em;
 }
 
-.purchase-btn-show, .my-cart-list-btn-show{
+.cart-item-btn-show, .cart-item-list-btn-show{
     padding: 15px;
     font-size: 1em;
     border-radius: 10px;
@@ -66,21 +59,17 @@
 
 }
 
-.purchase button:hover{
+.cart-item button:hover{
     opacity: 0.9;
 }
 
 
-
-
-/* style para lista de carrinho */
-
-.my-cart-list-btns{
+.cart-item-list-btns{
     display: flex;
     flex-direction: column;
 }
 
-.my-cart-list-btn-remove{
+.cart-item-list-btn-remove{
     padding: 15px;
     font-size: 1em;
     border-radius: 10px;
@@ -93,7 +82,7 @@
     margin-top: 10px;
 }
 
-.my-cart-list-btn-remove:hover{
+.cart-item-list-btn-remove:hover{
     background-color: #284B63;
     color: #fff;
 }
