@@ -57,3 +57,22 @@
 .nav-link-icon:hover{
     opacity: 0.6;
 }
+
+.sidebar-menu{
+    display: none;
+    transition: 0.3s all ease;
+}
+
+
+@media (max-width: 600px) {
+ 
+    .sidebar-menu{
+        display: block;
+        color: #fff;
+    }
+
+    .nav-links{
+        display: none;
+    }
+
+}

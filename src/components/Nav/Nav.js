@@ -2,7 +2,7 @@ import './Nav.css'
 import avatar from '../../assets/usuario-em-branco.png'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { FiShoppingCart } from 'react-icons/fi'
+import { FiMenu, FiShoppingCart } from 'react-icons/fi'
 import PrivateRoute from '../../auth/PrivateRoute'
 
 export default function Nav() {
@@ -10,6 +10,8 @@ export default function Nav() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { currentUser, isAuthenticated } = useSelector(rootReducer => rootReducer.userReducer)
+    const sideBarReducer = useSelector(rootReducer => rootReducer.sideBarReducer)
+
     function handleLogout() {
         navigate('/')
         localStorage.removeItem('token')
@@ -24,6 +26,15 @@ export default function Nav() {
                         <Link to={'/'} className='nav-link'>
                             <h1>SkateMidia</h1>
                         </Link>
+
+                        <FiMenu
+                            size={25}
+                            className={sideBarReducer ? 'desactive' : 'sidebar-menu'}
+                            onClick={() => {
+                                dispatch({ type: 'SHOW_MENU' })
+                            }}
+                        />
+
                         <div className="nav-links">
                             <Link to={'/profile'} className='nav-link' >
                                 {
@@ -62,10 +73,12 @@ export default function Nav() {
     return (
         <nav className="nav">
             <div className='nav-container'>
+
                 <Link to={'/'} className='nav-link'>
                     <h1>SkateMidia</h1>
                 </Link>
-                <div className="nav-links">
+
+                <div className='nav-links'>
                     <Link to={'/login'} className='nav-link'>
                         <p>Entrar</p>
                     </Link>
@@ -73,7 +86,17 @@ export default function Nav() {
                         <p>Cadastrar-se</p>
                     </Link>
                 </div>
+
+                <FiMenu
+                    size={25}
+                    className={sideBarReducer ? 'desactive' : 'sidebar-menu'}
+                    onClick={() => {
+                        dispatch({ type: 'SHOW_MENU' })
+                    }}
+                />
+
             </div>
+
         </nav>
     )
 

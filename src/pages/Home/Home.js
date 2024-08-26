@@ -3,6 +3,7 @@ import Nav from "../../components/Nav/Nav";
 import GenericPage from '../GenericPage';
 import api from '../../api/api'
 import { useEffect, useState } from "react";
+import SideBar from "../../components/SideBar/SideBar";
 
 export default function Home() {
 
@@ -31,6 +32,7 @@ export default function Home() {
     return (
         <div>
             <Nav />
+            <SideBar />
             <GenericPage>
                 {
 
