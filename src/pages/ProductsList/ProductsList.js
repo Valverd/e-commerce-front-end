@@ -35,20 +35,20 @@ export default function ProductsList() {
 
                 <GenericPage>
                     <h1>{type}</h1>
-                    <div className='container-products-list'>
+                    <div className='products-list'>
                         {
                             wichProduct.map((item, i) => {
                                 return (
                                     <Link
                                         to={`/${type}/${item._id}`}
                                         key={i}
-                                        className='product-link'>
+                                        style={{textDecoration: 'none'}}
+                                        className='products-list-a'
+                                    >
                                         {/* a classe product-link fica localizado no ProductItem.css para generalizar em todos */}
                                         <ProductItem
                                             item={item}
-                                            i={i}
-                                            type={type}
-                                            className={'product-item'}
+                                            prod_list_class={'products-list-item'}
                                         />
                                     </Link>
                                 )

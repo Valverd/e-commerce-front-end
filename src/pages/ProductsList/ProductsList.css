@@ -1,7 +1,37 @@
-.container-products-list{
+.products-list{
     display: flex;
     flex-wrap: wrap;
-    margin: auto;
-    justify-content: stretch;
     margin-bottom: 80px;
+}
+
+.products-list-a{
+    width: 25%;
+}
+
+.products-list-item{
+    width: 100%;
+}
+
+@media (max-width: 1200px){
+    .products-list-a{
+        width: 33.33%;
+    }
+}
+
+@media (max-width: 800px){
+    .products-list-a{
+        width: 50%;
+    }
+}
+
+@media (max-width: 550px){
+    .products-list-a{
+        width: 80%;
+    }
+}
+
+@media (max-width: 500px){
+    .products-list-a{
+        width: 100%;
+    }
 }

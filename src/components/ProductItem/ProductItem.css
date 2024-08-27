@@ -37,7 +37,7 @@
     padding: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     gap: 10px;
 }
 
@@ -50,8 +50,19 @@
 
 
 @media (max-width: 700px) {
+    .product-item{
+        width: 230px;
+    }
+
     .product-item img{
-        width: 200px;
-        height: 200px;
+        width: 100%;
+    }
+
+    .product-item-description{
+        height: 140px;
+    }
+
+    .product-item h1{
+        font-size: 1.3em;
     }
 }

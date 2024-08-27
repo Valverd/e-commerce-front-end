@@ -16,11 +16,22 @@ export default function Carousel({ items, type }) {
     useEffect(() => {
         setFilteritems(items.filter(item => item.type === type))
     }, [])
-
+    
     //o useLayoutEffect ajuda a fazer com que o scrollWidth e offSetWidth sejam processados após todos os componentes de filterItems sejam renderizados 
     useLayoutEffect(() => {
-        setWidth(carousel.current?.scrollWidth - carousel.current?.offsetWidth)
-    }, [filterItems])
+        const updateWidth = () => {
+            setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
+        };
+        updateWidth();
+        
+        // Adiciona o event listener escutando quando a página mudar seu tamanho.
+        window.addEventListener('resize', updateWidth);
+        
+        // Limpa o event listener ao desmontar o componente, quando trocar de página, não estara mais ocorrendo o listener.
+        return () => {
+            window.removeEventListener('resize', updateWidth);
+        };
+    }, [filterItems]);
 
     // as funções de dragstart e dragend servem para capturar onde o produto esta localizado no eixo x
     // caso passem de 5 ele não é considerado um clique e não ativa o navigate do handleclick
@@ -54,13 +65,14 @@ export default function Carousel({ items, type }) {
                 </Link>
 
                 <motion.div
-                    ref={carousel} className="carousel-container"
+                    className="carousel-container"
                 >
 
                     <motion.div
+                        ref={carousel}
                         className='carousel-list'
                         drag='x'
-                        dragConstraints={{ right: 0, left: -width + 200 }}
+                        dragConstraints={{ right: 0, left: -width }}
                         initial={{ x: 200 }}
                         animate={{ x: 0 }}
                         transition={{ duration: 0.7 }}
