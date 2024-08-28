@@ -1,7 +1,7 @@
 import './Purchase.css'
 import { useNavigate } from 'react-router-dom'
 
-export default function Purchase({ product_type, name, price, image, id, qty, date }) {
+export default function Purchase({ product_type, name, price, image, id, qty, date, purchase_profile_classname }) {
 
     const navigate = useNavigate()
 
@@ -23,7 +23,7 @@ export default function Purchase({ product_type, name, price, image, id, qty, da
 
 
     return (
-        <div className="purchase">
+        <div className={`purchase ${purchase_profile_classname}`}>
             <div className='purchase-info'>
                 <img alt='Imagem do Produto' src={image} width={100} />
                 <div className='purchase-description'>

@@ -60,11 +60,16 @@
 
 .sidebar-menu{
     display: none;
+    cursor: pointer;
     transition: 0.3s all ease;
 }
 
 
 @media (max-width: 600px) {
+
+    .nav{
+        margin-bottom: 30px;
+    }
  
     .sidebar-menu{
         display: block;

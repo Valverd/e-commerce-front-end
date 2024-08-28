@@ -1,16 +1,19 @@
 import './Nav.css'
+import PrivateRoute from '../../auth/PrivateRoute'
+import SideBar from '../SideBar/SideBar'
 import avatar from '../../assets/usuario-em-branco.png'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { FiMenu, FiShoppingCart } from 'react-icons/fi'
-import PrivateRoute from '../../auth/PrivateRoute'
+import { useState } from 'react'
 
 export default function Nav() {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { currentUser, isAuthenticated } = useSelector(rootReducer => rootReducer.userReducer)
-    const sideBarReducer = useSelector(rootReducer => rootReducer.sideBarReducer)
+    // const sideBarReducer = useSelector(rootReducer => rootReducer.sideBarReducer)
+    const [showSideBar, setShowSideBar] = useState(false)
 
     function handleLogout() {
         navigate('/')
@@ -29,10 +32,8 @@ export default function Nav() {
 
                         <FiMenu
                             size={25}
-                            className={sideBarReducer ? 'desactive' : 'sidebar-menu'}
-                            onClick={() => {
-                                dispatch({ type: 'SHOW_MENU' })
-                            }}
+                            className={showSideBar ? 'desactive' : 'sidebar-menu'}
+                            onClick={() => setShowSideBar(true)}
                         />
 
                         <div className="nav-links">
@@ -65,39 +66,49 @@ export default function Nav() {
                         </div>
                     </div>
                 </nav>
+
+                <SideBar
+                    showSideBar={showSideBar}
+                    setShowSideBar={() => setShowSideBar(false)}
+                />
             </PrivateRoute>
         )
 
     }
 
     return (
-        <nav className="nav">
-            <div className='nav-container'>
+        <div>
+            <nav className="nav">
+                <div className='nav-container'>
 
-                <Link to={'/'} className='nav-link'>
-                    <h1>SkateMidia</h1>
-                </Link>
+                    <Link to={'/'} className='nav-link'>
+                        <h1>SkateMidia</h1>
+                    </Link>
 
-                <div className='nav-links'>
-                    <Link to={'/login'} className='nav-link'>
-                        <p>Entrar</p>
-                    </Link>
-                    <Link to={'/signUp'} className='nav-link'>
-                        <p>Cadastrar-se</p>
-                    </Link>
+                    <div className='nav-links'>
+                        <Link to={'/login'} className='nav-link'>
+                            <p>Entrar</p>
+                        </Link>
+                        <Link to={'/signUp'} className='nav-link'>
+                            <p>Cadastrar-se</p>
+                        </Link>
+                    </div>
+
+                    <FiMenu
+                        size={25}
+                        className={showSideBar ? 'desactive' : 'sidebar-menu'}
+                        onClick={() => setShowSideBar(true)}
+                    />
+
                 </div>
 
-                <FiMenu
-                    size={25}
-                    className={sideBarReducer ? 'desactive' : 'sidebar-menu'}
-                    onClick={() => {
-                        dispatch({ type: 'SHOW_MENU' })
-                    }}
-                />
+            </nav>
 
-            </div>
-
-        </nav>
+            <SideBar
+                showSideBar={showSideBar}
+                setShowSideBar={() => setShowSideBar(false)}
+            />
+        </div>
     )
 
 }

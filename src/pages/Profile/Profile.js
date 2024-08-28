@@ -125,6 +125,7 @@ export default function Profile() {
                                                     id={item._id}
                                                     qty={item.qty}
                                                     date={item.date}
+                                                    purchase_profile_classname={'profile-purchase'}
                                                 />
                                             )
 

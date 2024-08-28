@@ -97,3 +97,38 @@
     background-color: #284B63;
     color: #fff;
 }
+
+
+@media (max-width: 950px){
+    .purchase-info{
+        width: 60%;
+    }
+    .purchase-description h1{
+        font-size: 1.3em;
+    }
+}
+
+
+@media (max-width: 650px){
+    .purchase{
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    .purchase-info{
+        width: 100%;
+    }
+}
+
+@media (max-width: 450px){
+    .purchase-info{
+        display: flex;
+        flex-direction: column;
+        gap: 30px; 
+    }
+
+    .purchase-info img{
+        width: 100%;
+    }
+}

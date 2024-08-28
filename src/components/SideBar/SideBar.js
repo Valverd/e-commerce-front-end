@@ -5,12 +5,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { FiX } from 'react-icons/fi'
 import PrivateRoute from '../../auth/PrivateRoute'
 
-export default function SideBar() {
+export default function SideBar({showSideBar, setShowSideBar}) {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const { currentUser, isAuthenticated } = useSelector(rootReducer => rootReducer.userReducer)
-    const sideBarReducer = useSelector(root => root.sideBarReducer)
 
 
     function handleLogout() {
@@ -24,13 +23,11 @@ export default function SideBar() {
 
         return (
             <PrivateRoute>
-                <div className={sideBarReducer ? 'sidebar visible' : 'sidebar'}>
+                <div className={showSideBar ? 'sidebar visible' : 'sidebar'}>
                     <FiX
                         size={25}
                         className='sidebar-close'
-                        onClick={() => {
-                            dispatch({ type: 'HIDE_MENU' })
-                        }}
+                        onClick={setShowSideBar}
                     />
                     <div className="sidebar-links">
                         <Link to={'/profile'} className='sidebar-link' >
@@ -67,13 +64,11 @@ export default function SideBar() {
     }
 
     return (
-        <div className={sideBarReducer ? 'sidebar visible' : 'sidebar'}>
+        <div className={showSideBar ? 'sidebar visible' : 'sidebar'}>
             <FiX
                 size={25}
                 className='sidebar-close'
-                onClick={() => {
-                    dispatch({ type: 'HIDE_MENU' })
-                }}
+                onClick={setShowSideBar}
             />
 
             <div className='sidebar-links'>
