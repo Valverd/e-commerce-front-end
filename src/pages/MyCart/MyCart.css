@@ -12,7 +12,7 @@
     box-shadow: 0 0 10px #aaa;
 }
 
-.my-cart-total{
+.my-cart-total {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -20,7 +20,7 @@
     padding: 20px;
 }
 
-.my-cart-total button{
+.my-cart-total button {
     padding: 20px;
     border-radius: 10px;
     border: 1px solid #6B8E23;
@@ -32,7 +32,7 @@
     transition: all 0.3s;
 }
 
-.my-cart-total button:hover{
+.my-cart-total button:hover {
     background-color: #fff;
     border: 1px solid #6B8E23;
     color: #6B8E23;
@@ -52,4 +52,19 @@
     margin-top: 20px;
     font-size: 1.2em;
     color: #333;
+}
+
+
+
+@media (max-width: 550px) {
+    .my-cart-total {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+    }
+
+    .my-cart-total button {
+        width: 100%;
+    }
 }

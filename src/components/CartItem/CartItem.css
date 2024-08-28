@@ -31,14 +31,20 @@
     font-size: 1.5em;
 }
 
-.cart-item-description-stock{    
+.cart-item-description-stock{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cart-item-description-stock-qty{    
     display: flex;
     align-items: center;
     gap: 5px;
     user-select: none;
 }
 
-.cart-item-description-stock span{
+.cart-item-description-stock-qty span{
     font-weight: bold;
 }
 
@@ -46,7 +52,13 @@
     color: #6B8E23;
 }
 
-.cart-item-btn-show, .cart-item-list-btn-show{
+.cart-item-list-btns{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cart-item-list-btn-show{
     padding: 15px;
     font-size: 1em;
     border-radius: 10px;
@@ -64,11 +76,6 @@
 }
 
 
-.cart-item-list-btns{
-    display: flex;
-    flex-direction: column;
-}
-
 .cart-item-list-btn-remove{
     padding: 15px;
     font-size: 1em;
@@ -79,10 +86,79 @@
     font-weight: bold;
     cursor: pointer;
     transition: 0.3s all;
-    margin-top: 10px;
 }
 
 .cart-item-list-btn-remove:hover{
     background-color: #284B63;
     color: #fff;
+}
+
+@media (max-width: 930px){
+    .cart-item-info{
+        width: 60%;
+    }
+}
+
+@media (max-width: 700px){
+    .cart-item-info{
+        width: 70%;
+    }
+}
+
+@media (max-width: 600px){
+    .cart-item{
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .cart-item-info{
+        width: 100%;
+    }
+
+    .cart-item-info img{
+        width: 150px;
+        height: 150px;
+    }
+
+    .cart-item-description h1{
+        font-size: 1.2em;
+    }
+
+    .cart-item-description-stock{
+        width: 100%;
+        font-size: 1.1em;
+    }
+
+    .cart-item-list-btns{
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .cart-item-list-btns button{
+        width: 50%;
+    }
+
+}
+
+@media (max-width: 400px){
+    .cart-item{
+        padding: 10px;
+    }
+
+    .cart-item-info img{
+        width: 120px;
+        height: 120px;
+    }
+
+    .cart-item-list-btns button{
+        padding: 8px;
+    }
+}
+
+@media (max-width: 350px){
+    .cart-item-description h1{
+        font-size: 1.1em;
+    }
 }

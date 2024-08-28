@@ -134,24 +134,26 @@ export default function ProductInfoPage() {
                                 <p><span>R$</span> {product.price.toLocaleString('pt-br', { minimumFractionDigits: 2 })}</p>
                             </div>
                             <div className='product-info-page-info-stock'>
-                                <p>Disponíveis: {product.stock}</p>
-                            </div>
-                            <div className='product-info-page-info-qty'>
-                                <p>Quantidade:</p>
-                                <select
-                                    ref={select_qty}
-                                    onChange={(e) => {
-                                        product.qty = parseInt(e.target.value)
-                                    }}
-                                >
-                                    {Array.from({ length: product.stock }, (_, index) => {
-                                        return (
-                                            <option key={index + 1} value={index + 1}>
-                                                {index + 1}
-                                            </option>
-                                        )
-                                    })}
-                                </select>
+                                <div className='product-info-page-info-stock-qty'>
+                                    <p>Disponíveis: {product.stock}</p>
+                                </div>
+                                <div className='product-info-page-info-qty'>
+                                    <p>Quantidade:</p>
+                                    <select
+                                        ref={select_qty}
+                                        onChange={(e) => {
+                                            product.qty = parseInt(e.target.value)
+                                        }}
+                                    >
+                                        {Array.from({ length: product.stock }, (_, index) => {
+                                            return (
+                                                <option key={index + 1} value={index + 1}>
+                                                    {index + 1}
+                                                </option>
+                                            )
+                                        })}
+                                    </select>
+                                </div>
                             </div>
                             <div className='product-info-page-info-btns'>
                                 <button className='product-info-page-info-buy' onClick={() => setShowModal(true)}>Comprar</button>
