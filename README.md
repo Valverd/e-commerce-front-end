@@ -1,70 +1,88 @@
-# Getting Started with Create React App
+# SkateMidia
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Bem-vindo ao SkateMidia, um e-commerce de skate desenvolvido em React.
 
-## Available Scripts
+![image](https://github.com/user-attachments/assets/510889e5-392f-4fe2-b5de-911b612edd76)
 
-In the project directory, you can run:
 
-### `npm start`
+## Índice
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Sobre o Projeto
+- Funcionalidades
+- Instalação
+- Uso
+- Tecnologias Utilizadas
+- Contribuição
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Sobre o Projeto
 
-### `npm test`
+O SkateMidia é um e-commerce focado em fornecer uma experiência completa para os amantes de skate. Aqui, os usuários podem navegar por uma ampla seleção de shapes, trucks e acessórios em geral para skate, adicionar itens ao carrinho e finalizar suas compras de forma simples e rápida.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Funcionalidades
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Catálogo de Produtos: Explore uma variedade de skates, peças e acessórios.
+- Busca de Produtos: Encontre rapidamente o produto que deseja.
+- Carrinho de Compras: Adicione e remova produtos do carrinho.
+- Finalização de Compra: Processo de checkout simples e seguro.
+- Filtros de Produto: Filtre produtos por categoria, preço e marca.
+- Responsivo: Layout responsivo para dispositivos móveis e desktops.
+  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Instalação
 
-### `npm run eject`
+Siga os passos abaixo para rodar o projeto localmente, porém será necessário o back-end para ter o completo funcionamento:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Clone o repositório:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+git clone https://github.com/seu-usuario/skateshop.git
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. Navegue até o diretório do projeto:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+cd skateshop
+```
 
-## Learn More
+3. Instale as dependências:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npm install axios framer-motion react react-dom react-icons react-redux react-router-dom react-scripts react-toastify redux redux-persist
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4. Inicie o servidor de desenvolvimento:
 
-### Code Splitting
+```
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+## Uso
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Navegue pela loja para explorar os produtos.
+- Atualize seu perfil da forma como desejar.
+- Adicione produtos ao carrinho e finalize sua compra.
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Tecnologias Utilizadas
 
-### Advanced Configuration
+- React: Biblioteca JavaScript para construção de interfaces de usuário.
+- React Router: Gerenciamento de rotas no React.
+- React Icons: Variedades de ícones para uso.
+- React Toastify: Animações de balões informativos.
+- React Redux: Gerenciamento de estado global da aplicação modificado ao React.
+- Redux: Gerenciamento de estado global da aplicação.
+- Redux Persist: Gerenciamento de estado global e persiste nos dados com localstorage.
+- Framer Motion: Animações fluídas e interativas.
+- Axios: Requisições HTTP para APIs.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Contribuição
+Contribuições são bem-vindas! Se você tem alguma sugestão ou encontrou um bug, por favor abra uma issue ou envie um pull request.
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Fork o repositório
+2. Crie uma nova branch: git checkout -b minha-nova-feature
+3. Faça suas alterações e commite: git commit -m 'Adiciona nova feature'
+4. Envie para o repositório remoto: git push origin minha-nova-feature
+5. Abra um pull request
