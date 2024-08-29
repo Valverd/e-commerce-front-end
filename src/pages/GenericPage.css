@@ -1,3 +1,8 @@
-.no-scroll{
-    overflow: hidden;
+.generic-page{
+    max-width: 1400px;
+    margin: auto;
+    padding: 0 20px;
+    margin-bottom: 150px;
+    min-height: calc(100vh - 364px);
+    flex: 1;
 }

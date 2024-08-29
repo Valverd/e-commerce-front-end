@@ -5,6 +5,7 @@ import api from '../../api/api'
 import ProductItem from "../../components/ProductItem/ProductItem";
 import { useEffect, useState } from "react";
 import GenericPage from '../GenericPage';
+import Footer from '../../components/Footer/Footer';
 
 export default function ProductsList() {
 
@@ -56,7 +57,7 @@ export default function ProductsList() {
                         }
                     </div>
                 </GenericPage>
-
+                <Footer />
             </div>
         )
     }

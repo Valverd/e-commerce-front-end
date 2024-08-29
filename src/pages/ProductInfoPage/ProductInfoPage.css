@@ -80,11 +80,13 @@
 .product-info-page-info-buy {
     background-color: #6B8E23;
     color: #fff;
-    border: 1px solid #6B8E23;
+    border: #6B8E23;
 }
 
 .product-info-page-info-buy:hover {
-    opacity: 0.9;
+    background-color: #eee;
+    color: #6B8E23;
+    border: 1px solid #6B8E23;
 }
 
 .product-info-page-info-addcart {
@@ -94,7 +96,9 @@
 }
 
 .product-info-page-info-addcart:hover {
-    opacity: 0.9;
+    background-color: #eee;
+    color: #284B63;
+    border: 1px solid #284B63;
 }
 
 .product-info-page-modal-txt {

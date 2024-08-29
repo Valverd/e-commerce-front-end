@@ -4,6 +4,7 @@ import api from '../../api/api'
 import './SignUp.css'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
+import Footer from '../../components/Footer/Footer'
 
 export default function SignUp() {
 
@@ -64,6 +65,7 @@ export default function SignUp() {
                     </div>
 
                 </GenericPage>
+                <Footer />
             </div>
 
         </div>

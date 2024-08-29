@@ -2,20 +2,23 @@ import './Nav.css'
 import PrivateRoute from '../../auth/PrivateRoute'
 import SideBar from '../SideBar/SideBar'
 import avatar from '../../assets/usuario-em-branco.png'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { FiMenu, FiShoppingCart } from 'react-icons/fi'
+import { FiLogOut, FiMenu, FiShoppingCart } from 'react-icons/fi'
 import { useState } from 'react'
 
 export default function Nav() {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const location = useLocation()
     const { currentUser, isAuthenticated } = useSelector(rootReducer => rootReducer.userReducer)
-    // const sideBarReducer = useSelector(rootReducer => rootReducer.sideBarReducer)
     const [showSideBar, setShowSideBar] = useState(false)
 
     function handleLogout() {
+        if (location.pathname === '/') {
+            window.location.reload()
+        }
         navigate('/')
         localStorage.removeItem('token')
         dispatch({ type: 'LOGOUT_USER' })
@@ -33,34 +36,42 @@ export default function Nav() {
                         <FiMenu
                             size={25}
                             className={showSideBar ? 'desactive' : 'sidebar-menu'}
-                            onClick={() => setShowSideBar(true)}
+                            onClick={() => {
+                                setShowSideBar(true)
+                                document.body.classList.add("no-scroll");
+                            }}
                         />
 
                         <div className="nav-links">
                             <Link to={'/profile'} className='nav-link' >
-                                {
-                                    currentUser.profileImg ?
-                                        <img
-                                            src={currentUser.profileImg}
-                                            alt="Foto de Perfil"
-                                            className='nav-img'
-                                        />
-                                        :
-                                        <img
-                                            src={avatar}
-                                            alt="Foto de Perfil"
-                                            className='nav-img'
-                                        />
-                                }
+                                <div>
+                                    {
+                                        currentUser.profileImg ?
+                                            <img
+                                                src={currentUser.profileImg}
+                                                alt="Foto de Perfil"
+                                                className='nav-img'
+                                            />
+                                            :
+                                            <img
+                                                src={avatar}
+                                                alt="Foto de Perfil"
+                                                className='nav-img'
+                                            />
+                                    }
+                                </div>
+                                <p>Perfil</p>
                             </Link>
                             <Link to={'/my-cart'} className='nav-link' title='Meu Carrinho'>
                                 <FiShoppingCart size={20} className='nav-link-icon' />
+                                <p>Carrinho</p>
                             </Link>
                             <Link
                                 to={'/'}
                                 className='nav-link'
                                 onClick={handleLogout}
                             >
+                                <FiLogOut size={20} className='nav-link-icon' />
                                 <p>Sair</p>
                             </Link>
                         </div>
@@ -69,7 +80,10 @@ export default function Nav() {
 
                 <SideBar
                     showSideBar={showSideBar}
-                    setShowSideBar={() => setShowSideBar(false)}
+                    setShowSideBar={() => {
+                        setShowSideBar(false)
+                        document.body.classList.remove("no-scroll");
+                    }}
                 />
             </PrivateRoute>
         )
@@ -97,7 +111,10 @@ export default function Nav() {
                     <FiMenu
                         size={25}
                         className={showSideBar ? 'desactive' : 'sidebar-menu'}
-                        onClick={() => setShowSideBar(true)}
+                        onClick={() => {
+                            setShowSideBar(true)
+                            document.body.classList.add("no-scroll");
+                        }}
                     />
 
                 </div>
@@ -106,7 +123,10 @@ export default function Nav() {
 
             <SideBar
                 showSideBar={showSideBar}
-                setShowSideBar={() => setShowSideBar(false)}
+                setShowSideBar={() => {
+                    setShowSideBar(false)
+                    document.body.classList.remove("no-scroll");
+                }}
             />
         </div>
     )

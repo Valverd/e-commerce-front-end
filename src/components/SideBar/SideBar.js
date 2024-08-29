@@ -1,19 +1,23 @@
 import './SideBar.css'
 import avatar from '../../assets/usuario-em-branco.png'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { FiX } from 'react-icons/fi'
+import { FiLogOut, FiShoppingBag, FiShoppingCart, FiX } from 'react-icons/fi'
 import PrivateRoute from '../../auth/PrivateRoute'
 
 export default function SideBar({showSideBar, setShowSideBar}) {
 
     const navigate = useNavigate()
+    const location = useLocation()
     const dispatch = useDispatch()
     const { currentUser, isAuthenticated } = useSelector(rootReducer => rootReducer.userReducer)
 
-
     function handleLogout() {
+        if(location.pathname === '/'){
+            window.location.reload()
+        }
         navigate('/')
+        setShowSideBar(false)
         localStorage.removeItem('token')
         dispatch({ type: 'LOGOUT_USER' })
     }
@@ -47,6 +51,7 @@ export default function SideBar({showSideBar, setShowSideBar}) {
                             } Meu Perfil
                         </Link>
                         <Link to={'/my-cart'} className='sidebar-link' title='Meu Carrinho'>
+                            <FiShoppingCart size={25} />
                             <p>Meu Carrinho</p>
                         </Link>
                         <Link
@@ -54,6 +59,7 @@ export default function SideBar({showSideBar, setShowSideBar}) {
                             className='sidebar-link'
                             onClick={handleLogout}
                         >
+                            <FiLogOut size={25} />
                             <p>Sair</p>
                         </Link>
                     </div>

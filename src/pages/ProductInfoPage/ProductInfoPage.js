@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import Modal from '../../components/Modal/Modal';
+import Footer from '../../components/Footer/Footer';
 
 export default function ProductInfoPage() {
 
@@ -163,6 +164,7 @@ export default function ProductInfoPage() {
                         </div>
                     </div>
                 </GenericPage>
+                <Footer />
             </div>
         )
     }

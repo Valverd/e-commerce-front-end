@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import api from '../../api/api';
 import { toast } from 'react-toastify';
+import Footer from '../../components/Footer/Footer';
 
 export default function Profile() {
 
@@ -142,6 +143,7 @@ export default function Profile() {
                     </div>
 
                 </GenericPage>
+                <Footer />
             </div>
         )
 

@@ -8,6 +8,7 @@ import CartItem from '../../components/CartItem/CartItem'
 import Modal from '../../components/Modal/Modal'
 import api from '../../api/api'
 import { toast } from 'react-toastify'
+import Footer from '../../components/Footer/Footer';
 
 export default function MyCart() {
 
@@ -110,6 +111,7 @@ export default function MyCart() {
                         <button className='product-info-page-modal-btns-cancel' onClick={() => setShowModal(false)}>Cancelar</button>
                     </div>
                 </Modal>
+                
                 <Nav />
 
                 <GenericPage>
@@ -168,6 +170,7 @@ export default function MyCart() {
                     </div >
 
                 </GenericPage>
+                <Footer />
             </div>
         )
 

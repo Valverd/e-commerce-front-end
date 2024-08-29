@@ -3,7 +3,7 @@ import Nav from "../../components/Nav/Nav";
 import GenericPage from '../GenericPage';
 import api from '../../api/api'
 import { useEffect, useState } from "react";
-import SideBar from "../../components/SideBar/SideBar";
+import Footer from "../../components/Footer/Footer";
 
 export default function Home() {
 
@@ -42,6 +42,7 @@ export default function Home() {
                     })
                 }
             </GenericPage>
+            <Footer />
         </div>
     )
 }

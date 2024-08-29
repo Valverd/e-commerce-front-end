@@ -2,6 +2,7 @@
     width: 100%;
     background-color: #353535;
     margin-bottom: 70px;
+    height: 80px;
 }
 
 .nav-container{
@@ -13,12 +14,6 @@
     margin: auto;
 }
 
-.nav-link{
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-}
-
 .nav-container h1{
     color: #fff;
     font-size: 2em;
@@ -28,6 +23,13 @@
     display: flex;
     align-items: center;
     gap: 20px;
+}
+
+.nav-link{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
 .nav-img{
@@ -46,16 +48,12 @@
     color: #fff;
 }
 
-.nav-link p:hover, .nav-links img:hover{
+.nav-link:hover{
     opacity: 0.6;
 }
 
 .nav-link-icon{
     color: #fff;
-}
-
-.nav-link-icon:hover{
-    opacity: 0.6;
 }
 
 .sidebar-menu{
